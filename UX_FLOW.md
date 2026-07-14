@@ -14,8 +14,8 @@ This document describes the end-to-end user experience flows for **JobBoard** (p
 
 JobBoard helps recruiters:
 
-1. Capture job postings and define screening criteria (manually, via AI, or by reusing prior jobs).
-2. Review and edit AI-generated evaluation guidelines.
+1. Capture job postings and define screening requirement areas (preset pills and custom keywords).
+2. Generate and review AI-produced evaluation criteria.
 3. Submit candidate applications and receive structured AI recommendations.
 4. Tune prompts and experimental features in a hidden Dev Mode.
 
@@ -45,6 +45,8 @@ JobBoard (header)
 
 Jobs page
 ├── Add Job form
+│   ├── Title + description
+│   └── Eligibility / Additional requirement pill selectors (TagInput)
 └── Jobs table
 
 Applications page
@@ -98,7 +100,8 @@ The core recruiter workflow spans two tabs:
 ```mermaid
 flowchart TD
     subgraph Jobs["Jobs Page"]
-        J1[Add job title + description] --> J2[Generate Criteria]
+        J1[Add job title + description] --> J1b[Select requirement pills in both columns]
+        J1b --> J2[Generate Criteria]
         J2 --> J3[Review Evaluation Modal]
         J3 --> J4[Confirm → Job added to table]
         J4 --> J5[Optional: View Criteria later]
@@ -123,7 +126,8 @@ flowchart TD
 ```mermaid
 flowchart TD
     Start([User on Jobs page]) --> Fill[Enter title + description]
-    Fill --> Validate{Title & description valid?}
+    Fill --> Pills[Select preset pills and/or custom keywords in Eligibility and Additional columns]
+    Pills --> Validate{Title & description valid?}
     Validate -->|No| InlineErr[Show inline field errors]
     InlineErr --> Fill
     Validate -->|Yes| ClickGen[Click Generate Criteria]
@@ -142,7 +146,9 @@ flowchart TD
 
 **Required fields:** Job Title, Job Description.
 
-**Success outcome:** New job appears at top of Jobs table with eligibility and additional requirement tags derived from generated criteria.
+**Requirement selection:** Two `TagInput` sections (Eligibility and Additional) support preset pills (Education, Experience, Certification, Location, Background Verification, Skills), free-form keywords, and skill suggestions via the Skills pill spark action.
+
+**Success outcome:** New job appears at top of Jobs table with eligibility and additional requirement tags derived from confirmed evaluation criteria.
 
 ### 7.2 Add Job — Criteria Reuse (Experimental)
 
@@ -305,9 +311,7 @@ flowchart TD
 | Template | Used by |
 |----------|---------|
 | Evaluation Criteria | Job criteria generation |
-| Evaluation Guideline (Assist) | Per-item eligibility assist (when enabled) |
-| Additional Requirement Guideline (Assist) | Per-item additional assist (when enabled) |
-| Skill Suggestions | Skills chip spark action in TagInput |
+| Skill Suggestions | Skills pill spark action in TagInput |
 | Application Recommendation | Application scoring |
 
 ### 9.2 Feature Toggle Impact
@@ -415,7 +419,7 @@ All modals use `role="dialog"` and `aria-modal="true"`.
 | `ApplicationsPage.jsx` | Add application, run/view recommendations |
 | `RecommendationModal.jsx` | Detailed scoring breakdown |
 | `DevMode.jsx` | Prompt editing, feature toggles, save/reset |
-| `TagInput.jsx` | Preset tags, free-form tags, skill suggestions (when used) |
+| `TagInput.jsx` | Preset pills, free-form tags, skill suggestions on Add Job form |
 
 ---
 
@@ -436,3 +440,4 @@ These flows are implemented; research should validate whether they meet user exp
 | Version | Date | Author | Notes |
 |---------|------|--------|-------|
 | 1.0 | 2026-07-14 | — | Initial UX flow document derived from prototype implementation and requirements |
+| 1.1 | 2026-07-14 | — | Aligned job creation flow with TagInput pill selection; removed Assist UI references |
