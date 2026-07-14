@@ -127,6 +127,113 @@ Each item includes written reasoning. Click **Re-evaluate** to run a fresh asses
 
 ---
 
+## Your data
+
+All screening data is **saved across sessions**. When you return to JobBoard, your work is still there:
+
+| Saved data | What it includes |
+|------------|------------------|
+| **Jobs** | Titles, descriptions, requirement tags, and evaluation criteria |
+| **Applications** | Applicant names, application text, and linked jobs |
+| **Recommendations** | AI scoring results and per-requirement reasoning |
+
+You can close the browser, log out, and come back later without losing jobs or applications.
+
+---
+
+## Archiving jobs and applications
+
+When a role or application is no longer active, you can **archive** it instead of deleting it.
+
+### What archiving does
+
+- Archived jobs and applications are **hidden from the Jobs and Applications pages**
+- The data is **not deleted** — it is kept on the backend for reference and audit
+- Archived items no longer appear in job dropdowns or active lists
+
+### Restoring archived items
+
+Archived jobs and applications can be **restored through Dev Mode** (see below). Once restored, they reappear in the main Jobs or Applications views with their criteria and recommendations intact.
+
+---
+
+## AI usage and costs
+
+JobBoard tracks AI usage on the backend. Every AI action is logged with a **cost breakdown** so your team can monitor spend.
+
+### Tracked actions
+
+| Action | When it runs |
+|--------|--------------|
+| **Evaluation criteria generation** | Clicking Generate Criteria on a new or existing job |
+| **Criteria regeneration** | Clicking Regenerate inside the Evaluation Criteria panel |
+| **Skill suggestions** | Clicking ✨ on the Skills pill |
+| **Application recommendation** | Submitting an application or clicking AI Recommendation |
+| **Re-evaluation** | Clicking Re-evaluate inside the AI Recommendation panel |
+
+### Cost breakdown
+
+Each logged action includes:
+
+- The action type (e.g. criteria generation, application recommendation)
+- The AI model used
+- Token usage (input and output)
+- Estimated cost for that specific action
+- A reference to the related job or application
+
+Administrators can review cumulative and per-action costs to understand where AI spend is going across the screening workflow.
+
+---
+
+## Dev Mode (administrators)
+
+Dev Mode is a hidden settings area for administrators and power users. It is not shown in the normal navigation.
+
+### How to open Dev Mode
+
+Click the **JobBoard logo** in the header **three times within 800 milliseconds**. A **Dev Mode** tab appears in the navigation and opens automatically.
+
+Click the logo three times again to close Dev Mode. The tab disappears and you return to the Jobs page.
+
+### What you can do in Dev Mode
+
+#### Experimental features
+
+| Feature | Effect |
+|---------|--------|
+| **Reuse criteria from similar previous jobs** | Shows a checkbox on the Add Job form. When enabled, manual pill selection is disabled and criteria are copied from a matching previous job. |
+
+Toggle features on or off, then click **Save Changes** to apply them.
+
+#### Prompt templates
+
+Dev Mode lets you edit the instructions sent to the AI for each action:
+
+| Template | Used when |
+|----------|-----------|
+| **Evaluation Criteria** | Generating screening criteria from a job |
+| **Evaluation Guideline (Assist)** | Regenerating a single eligibility guideline |
+| **Additional Requirement Guideline (Assist)** | Regenerating strong/partial fit guidelines for one additional requirement |
+| **Skill Suggestions** | Generating skill keywords from the ✨ action on the Skills pill |
+| **Application Recommendation** | Scoring a candidate application |
+
+Each template has editable **System** and **User** prompt fields. Dynamic values (such as job title, description, and requirement lists) are inserted using `{{variable}}` syntax shown on each card.
+
+#### Archive management
+
+Dev Mode includes controls to **view and restore archived jobs and applications**. Restored items return to the active Jobs or Applications lists.
+
+#### Save and reset
+
+- **Save Changes** — persists prompt edits and feature toggles across sessions
+- **Reset to Defaults** — restores all Dev Mode settings to their original values (requires confirmation)
+
+### Model selection
+
+The **Model** dropdown in the header (visible on all pages) controls which AI model is used for criteria generation, skill suggestions, and application recommendations. Dev Mode prompt changes apply regardless of which model is selected.
+
+---
+
 ## Quick reference
 
 | Goal | Action |
@@ -134,7 +241,10 @@ Each item includes written reasoning. Click **Re-evaluate** to run a fresh asses
 | Set up a role | Title + description → **select pills in both columns** → Generate Criteria → Add Job |
 | Screen a candidate | Applications → + Add Application → submit |
 | See scoring detail | Applications → View on an evaluated row |
+| Archive a job or application | Use the archive action on the item (hidden from main lists) |
+| Restore an archived item | Dev Mode → archive management → restore |
+| Review AI spend | Backend cost report → per-action breakdown |
 
 ---
 
-*Document version 2.1 — July 2026*
+*Document version 3.0 — July 2026*
