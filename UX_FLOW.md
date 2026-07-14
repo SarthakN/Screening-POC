@@ -40,7 +40,6 @@ JobBoard (header)
 ├── Navigation tabs
 │   ├── Jobs (default)
 │   ├── Applications
-│   ├── TTS
 │   └── Dev Mode (visible only when enabled)
 └── Model selector (global: gpt-4o | gpt-5.4 | gpt-5.5)
 
@@ -55,9 +54,6 @@ Applications page
 Dev Mode page
 ├── Feature toggles
 └── Prompt editors
-
-TTS page
-└── Script-to-speech utility (standalone)
 ```
 
 ---
@@ -68,7 +64,6 @@ TTS page
 flowchart LR
     A[App Load] --> B[Jobs tab - default]
     B <-->|Tab click| C[Applications tab]
-    B <-->|Tab click| D[TTS tab]
     B <-->|Logo 3x click| E{Dev Mode enabled?}
     E -->|Toggle on| F[Dev Mode tab visible]
     E -->|Toggle off| B
@@ -325,23 +320,7 @@ Dev Mode settings persist across page reload. All other data (jobs, applications
 
 ---
 
-## 10. TTS Page Flow (Standalone Utility)
-
-The TTS tab is independent of the screening workflow.
-
-```mermaid
-flowchart LR
-    A[Paste script] --> B[Select TTS model + voice]
-    B --> C[Generate Audio]
-    C --> D[Inline audio player]
-    D --> E[Download MP3]
-```
-
-This flow does not read or write Jobs or Applications data.
-
----
-
-## 11. Cross-Page Dependencies
+## 10. Cross-Page Dependencies
 
 ```mermaid
 flowchart TD
@@ -361,9 +340,9 @@ flowchart TD
 
 ---
 
-## 12. UI States Reference
+## 11. UI States Reference
 
-### 12.1 Loading States
+### 11.1 Loading States
 
 | Location | Trigger | UI feedback |
 |----------|---------|-------------|
@@ -374,7 +353,7 @@ flowchart TD
 | Recommendation Modal | Re-evaluate | Spinner + "Re-evaluating…" |
 | TagInput (Skills) | Spark action | Loading state on skill suggestions |
 
-### 12.2 Error States
+### 11.2 Error States
 
 | Location | Trigger | UI feedback |
 |----------|---------|-------------|
@@ -385,7 +364,7 @@ flowchart TD
 
 **Error principle:** Failed operations do not clear previously saved data.
 
-### 12.3 Empty States
+### 11.3 Empty States
 
 | Page | Condition | Message |
 |------|-----------|---------|
@@ -395,7 +374,7 @@ flowchart TD
 
 ---
 
-## 13. Modal Inventory
+## 12. Modal Inventory
 
 | Modal | Trigger | Primary actions | Dismiss |
 |-------|---------|-----------------|---------|
@@ -407,7 +386,7 @@ All modals use `role="dialog"` and `aria-modal="true"`.
 
 ---
 
-## 14. Data Lifecycle (UX Implications)
+## 13. Data Lifecycle (UX Implications)
 
 | Data | Persists on reload? | User implication |
 |------|---------------------|------------------|
@@ -416,7 +395,7 @@ All modals use `role="dialog"` and `aria-modal="true"`.
 
 ---
 
-## 15. Accessibility Baseline
+## 14. Accessibility Baseline
 
 - Modal dialogs expose `role="dialog"` and `aria-modal="true"`.
 - Close actions available via button and Escape.
@@ -425,7 +404,7 @@ All modals use `role="dialog"` and `aria-modal="true"`.
 
 ---
 
-## 16. Screen-to-Flow Map
+## 15. Screen-to-Flow Map
 
 | Screen / Component | Primary flows |
 |--------------------|---------------|
@@ -436,12 +415,11 @@ All modals use `role="dialog"` and `aria-modal="true"`.
 | `ApplicationsPage.jsx` | Add application, run/view recommendations |
 | `RecommendationModal.jsx` | Detailed scoring breakdown |
 | `DevMode.jsx` | Prompt editing, feature toggles, save/reset |
-| `TTSPage.jsx` | Standalone text-to-speech |
 | `TagInput.jsx` | Preset tags, free-form tags, skill suggestions (when used) |
 
 ---
 
-## 17. Open UX Questions (from Research Plan)
+## 16. Open UX Questions (from Research Plan)
 
 These flows are implemented; research should validate whether they meet user expectations:
 
@@ -453,7 +431,7 @@ These flows are implemented; research should validate whether they meet user exp
 
 ---
 
-## 18. Revision History
+## 17. Revision History
 
 | Version | Date | Author | Notes |
 |---------|------|--------|-------|

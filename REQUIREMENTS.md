@@ -1,4 +1,4 @@
-# JobBoard Requirements Document (Excluding Text-to-Speech)
+# JobBoard Requirements Document
 
 ## 1. Purpose
 
@@ -8,8 +8,6 @@ Define the product requirements for the JobBoard web app flow covering:
 - Application intake
 - AI-based application recommendation
 - Developer mode prompt and feature configuration
-
-This document excludes all text-to-speech capabilities.
 
 ## 2. Scope
 
@@ -21,7 +19,6 @@ This document excludes all text-to-speech capabilities.
 - OpenAI chat-completions integration for evaluation and recommendation features.
 
 ### 2.2 Out of Scope
-- Text-to-speech page, UI, services, APIs, and acceptance criteria.
 - Authentication and user accounts.
 - Backend database and server-side persistence.
 - Multi-tenant, role-based access control, and audit trails.
@@ -341,7 +338,6 @@ This document excludes all text-to-speech capabilities.
 5. When criteria reuse feature is enabled in Dev Mode, Add Job supports matching and importing criteria from similar prior jobs.
 6. Prompt changes and feature toggle changes in Dev Mode persist after refresh.
 7. Missing API key blocks AI actions with clear error message rather than silent failure.
-8. Text-to-speech capabilities are not required for any acceptance test in this document.
 
 ## 11. Known Constraints
 

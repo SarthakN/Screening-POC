@@ -3,7 +3,6 @@ import AddJobForm from './components/AddJobForm'
 import JobList from './components/JobList'
 import ApplicationsPage from './components/ApplicationsPage'
 import DevMode from './components/DevMode'
-import TTSPage from './components/TTSPage'
 import { getPrompts } from './services/prompts'
 import { getDevFeatures } from './services/devFeatures'
 
@@ -62,12 +61,6 @@ export default function App() {
             >
               Applications
             </button>
-            <button
-              className={`nav-tab ${activePage === 'tts' ? 'nav-tab--active' : ''}`}
-              onClick={() => setActivePage('tts')}
-            >
-              TTS
-            </button>
             {devMode && (
               <button
                 className={`nav-tab nav-tab--dev ${activePage === 'dev' ? 'nav-tab--active' : ''}`}
@@ -119,8 +112,6 @@ export default function App() {
               evaluationResults={evaluationResults}
               model={model}
             />
-          ) : activePage === 'tts' ? (
-            <TTSPage />
           ) : activePage === 'dev' ? (
             <DevMode
               prompts={prompts}
