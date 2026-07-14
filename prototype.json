@@ -1,0 +1,15 @@
+{
+  "name": "AI Screening",
+  "designer": "Raghuveer Karigar",
+  "public": true,
+  "description": "AI-assisted candidate screening prototype for evaluating applicants against role criteria.",
+  "techStack": "react",
+  "entryPoint": "dist/index.html",
+  "buildCommand": "npm install && npm run build",
+  "tags": [],
+  "previewImage": "",
+  "auth": {
+    "enabled": false,
+    "mode": "users"
+  }
+}

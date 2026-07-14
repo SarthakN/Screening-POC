@@ -1,0 +1,25 @@
+{
+  "versions": [
+    {
+      "number": 1,
+      "name": "Version 1",
+      "description": "",
+      "author": "Unknown",
+      "timestamp": "2026-07-10T07:59:23.753Z",
+      "tags": [],
+      "fileCount": 28,
+      "totalSize": 400253
+    },
+    {
+      "number": 2,
+      "name": "Version 2",
+      "description": "",
+      "author": "Unknown",
+      "timestamp": "2026-07-14T10:22:07.036Z",
+      "tags": [],
+      "fileCount": 28,
+      "totalSize": 406714
+    }
+  ],
+  "nextVersion": 3
+}
