@@ -54,14 +54,16 @@ Each column shows the same set of clickable **preset pills**. Click a pill to se
 | **Education** | Degree or education requirements |
 | **Experience** | Years or type of work experience |
 | **Certification** | Licenses or certifications |
+| **Language** | Language proficiency requirements |
+| **Work Authorization** | Visa, work permit, or right-to-work requirements |
 | **Location** | Location or work arrangement |
 | **Background Verification** | Background check requirements |
 | **Skills** | Technical or role-specific skills |
 
 Select the pills that apply in **each column independently**. For example:
 
-- **Eligibility:** Education, Experience, Certification
-- **Additional:** Skills, Location
+- **Eligibility:** Education, Experience, Work Authorization, Certification
+- **Additional:** Skills, Language, Location
 
 ### Custom keywords
 
@@ -247,4 +249,4 @@ The **Model** dropdown in the header (visible on all pages) controls which AI mo
 
 ---
 
-*Document version 3.0 — July 2026*
+*Document version 3.1 — July 2026*
