@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import TagInput from './TagInput'
 import EvaluationModal from './EvaluationModal'
 import { findSimilarCriteriaJobs, generateEvaluationCriteria } from '../services/llm'
 
@@ -131,7 +132,7 @@ export default function AddJobForm({
         if (!matches.length) {
           setErrors(prev => ({
             ...prev,
-            reuse: 'No similar previous job with criteria was found. Uncheck reuse to generate criteria from the job description instead.',
+            reuse: 'No similar previous job with criteria was found. Uncheck reuse to enter keywords manually.',
           }))
           return
         }
@@ -205,7 +206,7 @@ export default function AddJobForm({
             />
             <span>
               <strong>Reuse criteria from similar previous jobs</strong>
-              <small>Copies the matched job's criteria as is for your review.</small>
+              <small>Disables keyword selection and copies the matched job's criteria as is.</small>
             </span>
           </label>
           {errors.reuse && <p className="reuse-error">{errors.reuse}</p>}
@@ -252,6 +253,29 @@ export default function AddJobForm({
           )}
         </div>
       )}
+
+      <div className="requirements-grid">
+        <div className="requirement-card critical">
+          <TagInput
+            label="Eligibility Requirements"
+            tags={form.criticalRequirements}
+            onChange={tags => setForm({ ...form, criticalRequirements: tags })}
+            jobTitle={form.title}
+            jobDescription={form.description}
+            disabled={reuseActive}
+          />
+        </div>
+        <div className="requirement-card additional">
+          <TagInput
+            label="Additional Requirements"
+            tags={form.additionalRequirements}
+            onChange={tags => setForm({ ...form, additionalRequirements: tags })}
+            jobTitle={form.title}
+            jobDescription={form.description}
+            disabled={reuseActive}
+          />
+        </div>
+      </div>
 
       <div className="form-footer">
         <button type="submit" className="btn-primary" disabled={reusingCriteria || generatingCriteria}>
