@@ -131,7 +131,7 @@ export default function AddJobForm({
         if (!matches.length) {
           setErrors(prev => ({
             ...prev,
-            reuse: 'No similar previous job with criteria was found. Uncheck reuse to enter keywords manually.',
+            reuse: 'No similar previous job with criteria was found. Uncheck reuse to generate criteria from the job description instead.',
           }))
           return
         }
@@ -205,7 +205,7 @@ export default function AddJobForm({
             />
             <span>
               <strong>Reuse criteria from similar previous jobs</strong>
-              <small>Disables keyword selection and copies the matched job's criteria as is.</small>
+              <small>Copies the matched job's criteria as is for your review.</small>
             </span>
           </label>
           {errors.reuse && <p className="reuse-error">{errors.reuse}</p>}

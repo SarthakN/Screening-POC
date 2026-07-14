@@ -14,24 +14,28 @@ Jobs  →  Define criteria  →  Applications  →  Review recommendations
 
 ---
 
-## Step 1: Create a job and generate criteria
+## Step 1: Create a job
 
-On the **Jobs** page, enter a **job title** and **job description**, then click **Generate Criteria**.
+On the **Jobs** page, enter a **job title** and **job description**. That is all that is required on the creation form — you do not manually select eligibility or additional requirements at this stage.
 
-The AI produces a screening framework and opens the **Evaluation Criteria** panel. Review the results, make any edits you need, and click **Add Job** to save the role to your list.
+Click **Generate Criteria** when you are ready. The AI reads your job description and builds a screening framework for you.
 
-If the role is similar to one you have already screened, you can optionally enable **Reuse criteria from similar previous jobs** before generating. The system will find a matching role and import its criteria for your review.
+If the role is similar to one you have already screened, you can optionally enable **Reuse criteria from similar previous jobs** before generating. The system will find a matching role and import its criteria for your review instead of generating new ones.
 
 ---
 
-## Step 2: Review and refine evaluation criteria
+## Step 2: Review the AI-generated criteria
 
-In the **Evaluation Criteria** panel, requirements are split into two groups:
+After you click **Generate Criteria**, the **Evaluation Criteria** panel opens. This is where eligibility and additional requirements first appear — proposed by the AI based on your job description.
+
+Requirements are split into two groups:
 
 - **Eligibility requirements** — Must-have qualifications, each with an evaluation guideline you can edit.
 - **Additional requirements** — Nice-to-have qualities, each with separate guidelines for a strong fit and a partial fit.
 
-You can adjust guidelines, move requirements between the two groups, or regenerate criteria for an existing job at any time. When you are satisfied, save the job or close the panel to keep your edits.
+Review the proposed requirements, adjust the guidelines, and move items between the two groups if needed. When you are satisfied, click **Add Job** to save the role. The requirements you confirmed here are what appear on the job in your list.
+
+For jobs already in your list, you can click **View Criteria** to reopen this panel, or **Regenerate** to produce a fresh set.
 
 ---
 
@@ -66,4 +70,4 @@ You can re-evaluate at any time if you want a fresh assessment.
 
 ---
 
-*Document version 1.1 — July 2026*
+*Document version 1.2 — July 2026*
