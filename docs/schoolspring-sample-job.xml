@@ -23,7 +23,10 @@
     <!-- school-year not in TE-77187 XML sample; backend field e_job.SchoolYear -->
     <!-- <school-year>26</school-year> -->
 
-    <!-- Grade level: not documented in TE-77187 XML; may map to job category -->
+    <!-- Grade level → e_job.gradelevel (tinyint enum). Allowed: 3, 5, 10, 15, 25, 20 (e.g. 3=Preschool) -->
+    <grade-level>15</grade-level>
+
+    <!-- Job category -->
     <categories>
       <category id="101" />
     </categories>
