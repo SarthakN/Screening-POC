@@ -1,0 +1,31 @@
+Field Category,UI Field Name,Backend Table,Backend Field,XML Element,Required,Type / Limit,Nullable,Default,Expected Values,Notes
+Contact,First name,e_user,first_name,contact/first-name,Required if no user_id,varchar(255),Yes,,Contact first name,Use contact-user-id OR person details per role (Owner/Contact)
+Contact,Last name,e_user,last_name,contact/last-name,Required if no user_id,varchar(255),Yes,,Contact last name,Use contact-user-id OR person details per role (Owner/Contact)
+Contact,Title,e_user,title,contact/title,Optional,varchar(255),Yes,,Job title of contact,Shown on public job posting for Contact role
+Contact,Email,e_user,email,contact/email,Required if no user_id,varchar(255),Yes,,Contact email (used for match),Used to match or create e_user under employer
+Contact,Phone number,e_user,phone,contact/phone,Optional,varchar(255),Yes,,Contact phone,
+Contact,Address line 1,e_user,address1,contact/address1,Optional,varchar(255),Yes,,Street address line 1,Not shown in TE-77187 XML sample; included for completeness
+Contact,Address line 2,e_user,address2,contact/address2,Optional,varchar(255),Yes,,Street address line 2,Not shown in TE-77187 XML sample; included for completeness
+Contact,City,e_user,city,contact/city,Optional,varchar(255),Yes,,City,
+Contact,State,e_user,state,contact/state,Optional,varchar,Yes,,State (resolved to State_ID),
+Contact,Zip,e_user,postal_code,contact/postal-code,Optional,varchar(255),Yes,,ZIP/postal code,
+Salary,Minimum salary,e_job,pay_min,salary-min,Optional,decimal,Yes,,Minimum salary amount,Shown only when pay_display = 1
+Salary,Maximum salary,e_job,pay_max,salary-max,Optional,decimal,Yes,,Maximum salary amount,Shown only when pay_display = 1
+Salary,Pay type,e_job,JobPayType_ID,salary-type,Optional,tinyint(3),Yes,,Pay type ID → D_JobPayType (per year / per hour / salary),ATS jobs may use ats_salarycode (salary-code) instead
+Job details,Job title,e_job,job_title,title,Yes,varchar(500),No,,Job title,
+Job details,Job description,e_job,description,summary,Yes,mediumtext,Yes,,Job description; HTML allowed,
+Job details,Info URL,e_job,info_url,detail-url,Yes,varchar(500),Yes,,Candidate redirect/apply URL,
+Job details,Employer name,e_job,DisplayEmployer,(derived from employer context),Yes,varchar(100),No,,Employer display name,Not an explicit XML element in TE-77187; typically set from employer/import context
+Job details,Job type,e_job,JobType_ID,full-time / part-time,Yes,tinyint(3),No,0,"1=Full-time, 2=Part-time, 20=Summer, 40=After school/Evening, 41=Full-time Unpaid, 42=Part-time Unpaid",XML uses boolean full-time and part-time elements
+Job details,Grade level,(not documented),,(not documented),Unknown,,,,,Not documented in TE-77187; may map to jobcategory_id if grade levels are represented as D_JobCategory values
+Job details,Posting date,e_job,DisplayDate,posted-date,Recommended,datetime,Yes,,Posting/display date,
+Job details,Close date,e_job,close_date,close-date,Optional,datetime,Yes,,Job close date,
+Job details,Positions,e_job,Positions,positions,Optional,smallint(5),Yes,,Number of openings; use 0 if unknown,
+Job details,School year,e_job,SchoolYear,(not in TE-77187 XML sample),Optional,tinyint(3),Yes,,Two-digit school year when available,
+Job details,Job category,E_Job_JobCategory / D_JobCategory,jobcategory_id,categories/category,Recommended,int(10),No,,One or more category IDs,Links job to subcategory; parent via D_JobCategory_Parent
+Location,Location name,e_location,location_name,location-name,Optional,varchar(255),Yes,,School/building/location name,Use location-id OR address fields per job
+Location,Address line 1,e_location,address1,address1,Optional,varchar(255),Yes,,Street address line 1,Required path when no location_id: city + state + postal_code minimum
+Location,Address line 2,e_location,address2,address2,Optional,varchar(255),Yes,,Street address line 2,
+Location,City,e_location,city,city,Required if no location_id,varchar(255),Yes,,City,Also used to set e_job.DisplayLocation (e.g. City ST)
+Location,State,e_location,state,state,Required if no location_id,varchar,Yes,,State (resolved to state_id),
+Location,Zip,e_location,postal_code,postal-code,Required if no location_id,varchar(255),Yes,,ZIP/postal code,

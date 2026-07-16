@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sample SchoolSpring job XML — all UI fields from the field-mapping spreadsheet.
+  Source: TE-77187 (https://powerschoolgroup.atlassian.net/browse/TE-77187)
+
+  Backend fields required for posting but not in the UI screenshot:
+  - job-code        → e_job.ExternalJobCode (required)
+  - owner-user-id   → e_job.Owner_User_ID (required; or provide owner contact block)
+  - display-salary  → e_job.pay_display (optional; 1=show, 0=hide)
+-->
+<jobs>
+  <job>
+    <!-- Job details -->
+    <job-code>EXT-JOB-2026-001</job-code>
+    <title><![CDATA[Mathematics Teacher]]></title>
+    <detail-url><![CDATA[https://example.com/apply/EXT-JOB-2026-001]]></detail-url>
+    <summary><![CDATA[<p>Seeking a certified mathematics teacher for grades 9-12.</p>]]></summary>
+    <full-time>true</full-time>
+    <part-time>false</part-time>
+    <posted-date>07-16-2026</posted-date>
+    <close-date>08-15-2026</close-date>
+    <positions>2</positions>
+    <!-- school-year not in TE-77187 XML sample; backend field e_job.SchoolYear -->
+    <!-- <school-year>26</school-year> -->
+
+    <!-- Grade level: not documented in TE-77187 XML; may map to job category -->
+    <categories>
+      <category id="101" />
+    </categories>
+
+    <!-- Location (pass location-id OR address fields) -->
+    <location-name><![CDATA[Lincoln High School]]></location-name>
+    <address1><![CDATA[100 Main Street]]></address1>
+    <address2><![CDATA[Building A]]></address2>
+    <city><![CDATA[Springfield]]></city>
+    <state><![CDATA[IL]]></state>
+    <postal-code>62701</postal-code>
+
+    <!-- Job Owner (required): pass user-id OR person details -->
+    <owner-user-id>1001</owner-user-id>
+
+    <!-- Job Contact (required): pass user-id OR person details -->
+    <contact>
+      <first-name><![CDATA[Jane]]></first-name>
+      <last-name><![CDATA[Smith]]></last-name>
+      <title><![CDATA[HR Director]]></title>
+      <email><![CDATA[jane.smith@example.edu]]></email>
+      <phone>555-0100</phone>
+      <address1><![CDATA[100 Main Street]]></address1>
+      <address2><![CDATA[Suite 200]]></address2>
+      <city><![CDATA[Springfield]]></city>
+      <state><![CDATA[IL]]></state>
+      <postal-code>62701</postal-code>
+    </contact>
+
+    <!-- Salary -->
+    <salary-min>45000</salary-min>
+    <salary-max>65000</salary-max>
+    <salary-type>1</salary-type>
+    <display-salary>true</display-salary>
+  </job>
+</jobs>
